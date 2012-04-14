@@ -1,0 +1,3 @@
+﻿UNITY_WEBPLAYER = Compile with support for webplayer
+WIN = Compile with windows specific functionality (high accuracy timer, console colors)
+VERIFY_THROWS = The SlimNet.Verify class will throw exceptions on all errors (use for debugging)

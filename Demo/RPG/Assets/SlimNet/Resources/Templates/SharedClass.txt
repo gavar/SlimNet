@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using SlimNet;
+using SlimMath;
+
+using Network = SlimNet.Network;
+using Events = SlimNet.Events;
+
+public class {Class}
+{
+	
+}

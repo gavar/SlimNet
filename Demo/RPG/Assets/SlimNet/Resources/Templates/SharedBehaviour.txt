@@ -1,0 +1,23 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using SlimNet;
+using SlimMath;
+
+using Network = SlimNet.Network;
+using Events = SlimNet.Events;
+
+public class {Class} : Behaviour
+{
+    // Use this for initialization
+    public override void Start()
+    {
+        
+    }
+
+    // Simulate is called once per simulation step
+    public override void Simulate()
+    {
+
+    }
+}

@@ -1,0 +1,16 @@
+﻿// This file is auto generated. Do not edit.
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using SlimNet;
+using SlimMath;
+
+using Network = SlimNet.Network;
+using Events = SlimNet.Events;
+
+public partial class {Class} : ActorDefinition
+{
+	//{AutoGen}
+	//{AutoGen}
+}

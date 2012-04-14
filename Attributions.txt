@@ -1,0 +1,11 @@
+\Demo\MMOController\Client\Assets\Gizmos\*
+ - License: CC Attribution 3.0 Unported (CC BY 3.0)
+ - Copyright: http://www.iconza.com/
+
+\SlimNet\SlimNet.Core\Externals\Lidgren
+ - License: MIT
+ - Copyright: Michael Lidgren
+ 
+\SlimNet\SlimNet.Core\Externals\SlimMath
+ - License: MIT
+ - Copyright: SlimDX Group

@@ -1,0 +1,57 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using SlimNet;
+using SlimMath;
+
+using Network = SlimNet.Network;
+using Events = SlimNet.Events;
+
+public class {Class} : Event<Actor>
+{
+    public override int DataSize
+    {
+        get { return 0; }
+    }
+
+    public override bool Reliable
+    {
+        get { return true; }
+    }
+
+    public override byte EventId
+    {
+        get { return HeaderBytes.UserStart + 0; }
+    }
+
+    public override LogLevel LogLevel
+    {
+        get { return LogLevel.Info; }
+    }
+
+    public override ProximityLevel ProximityLevel
+    {
+        get { return ProximityLevel.World; }
+    }
+
+    public override bool SynchronizeEvent
+    {
+        get { return true; }
+    }
+
+    public {Class}()
+        : base(EventTargets.Owner | EventTargets.Remotes | EventTargets.Server, EventSources.Owner)
+    {
+
+    }
+
+    public override void Pack(Network.ByteOutStream stream)
+    {
+
+    }
+
+    public override void Unpack(Network.ByteInStream stream)
+    {
+
+    }
+}

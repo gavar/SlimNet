@@ -1,0 +1,63 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using SlimNet;
+using SlimMath;
+
+using Network = SlimNet.Network;
+using Events = SlimNet.Events;
+
+public partial class {Class} : ActorDefinition
+{
+    // This is the ID of the actor definition It must be unique.
+    public override int Id
+    {
+        get { return 0; }
+    }
+
+    // This controls how many state stream updates we should lag behind when interpolating locally
+    public override int SimulationOffset
+    {
+        get { return 2; }
+    }
+
+    // This controls how often (every n:th tick) we should send state updates
+    public override int StateStreamUpdateRate
+    {
+        get { return 1; }
+    }
+
+    // The class doing the state serialization and deserialization
+    public override IActorStateStreamer StateStreamer 
+    { 
+        get { return new DefaultStateStreamer(); } 
+    }
+
+    // The source of the actors transform 
+    public override TransformSource TransformSource
+    {
+        get { return SlimNet.TransformSource.Engine; }
+    }
+
+    // This property should return an array of synchronized values (max 32) for this actor definition
+    public override SynchronizedValue[] SynchronizedValues
+    {
+        get
+        {
+            return new SynchronizedValue[] {
+
+            };
+        }
+    }
+
+    // This property should return an array of behaviours for this actor definition
+    public override Behaviour[] Behaviours
+    {
+        get
+        {
+            return new Behaviour[] {
+
+            };
+        }
+    }
+}
