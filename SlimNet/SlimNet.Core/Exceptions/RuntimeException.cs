@@ -2,7 +2,9 @@
  * SlimNet - Networking Middleware For Games
  * Copyright (C) 2011-2012 Fredrik Holmström
  * 
- * This software is provided 'as-is', without any express or implied
+ * This notice may not be removed or altered.
+ * 
+ * This software is provided 'as-is', without any expressed or implied
  * warranty. In no event will the authors be held liable for any damages
  * arising from the use of this software. 
  * 
@@ -15,12 +17,9 @@
  * You may not use this software for commercial purposes.
  * 
  * Distribution
- * You are free to share, copy and distribute the software in it's original, 
- * unmodified form. You are not allowed to distribute or make publicly 
- * available the software itself or it's sources in any modified manner. 
- * This notice may not be removed or altered from any source distribution.
+ * You are not allowed to distribute or make publicly available the software 
+ * itself or its source code in original or modified form.
  */
-
 
 using System;
 

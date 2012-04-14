@@ -18,7 +18,7 @@
  * 
  * Distribution
  * You are not allowed to distribute or make publicly available the software 
- * itself or it's sources in original or modified form.
+ * itself or its source code in original or modified form.
  */
 
 namespace SlimNet
