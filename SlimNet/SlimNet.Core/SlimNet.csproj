@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E4CBD3D4-81D9-4474-AA46-53324634584D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SlimNet</RootNamespace>
+    <AssemblyName>SlimNet</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Build\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;VERIFY_THROWS; UNITY_WEBPLAYER</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Actor.cs" />
+    <Compile Include="ActorDefinition.cs" />
+    <Compile Include="Behaviours\InterestManager.cs" />
+    <Compile Include="Collections\QuadTree.cs" />
+    <Compile Include="Collider.cs" />
+    <Compile Include="Collections\BinaryHeap.cs" />
+    <Content Include="CompilerSymbols.txt" />
+    <Compile Include="EventDescriptor.cs" />
+    <Compile Include="EventHandler.Actor.cs" />
+    <Compile Include="EventHandler.RaiseEvent.cs" />
+    <Compile Include="EventSimple.cs" />
+    <Compile Include="Events\ChangeOwner.cs" />
+    <Compile Include="RPCGen.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPCGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Scheduler.cs" />
+    <Compile Include="Stats.cs" />
+    <Compile Include="Synchronizable\SynchronizableHandler.cs" />
+    <Compile Include="Synchronizable\SynchronizedActor.cs" />
+    <Compile Include="Synchronizable\SynchronizedBool.cs" />
+    <Compile Include="StateStreamHandler.cs" />
+    <Compile Include="StateStreamer.cs" />
+    <Compile Include="Attributes.cs" />
+    <Compile Include="Behaviour.cs" />
+    <Compile Include="Client\Configuration.cs" />
+    <Compile Include="Client\Client.cs" />
+    <Compile Include="Collections\ObjectPool.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Context.Actor.cs" />
+    <Compile Include="Context.Player.cs" />
+    <Compile Include="Context.Plugin.cs" />
+    <Compile Include="Utils\DictionaryExtensions.cs" />
+    <Compile Include="Event.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="EventHandler.cs" />
+    <Compile Include="Events\Authenticated.cs" />
+    <Compile Include="Events\Despawn.cs" />
+    <Compile Include="Events\Hello.cs" />
+    <Compile Include="Events\Login.cs" />
+    <Compile Include="Events\Spawn.cs" />
+    <Compile Include="Exceptions\RecycleException.cs" />
+    <Compile Include="Exceptions\RuntimeException.cs" />
+    <Compile Include="Collections\UShortPool.cs" />
+    <Compile Include="Configuration.cs" />
+    <Compile Include="Externals\SlimMath\Single.cs" />
+    <Compile Include="HeaderBytes.cs" />
+    <Compile Include="Interfaces.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="Network\ByteInStream.cs" />
+    <Compile Include="Network\ByteStream.cs" />
+    <Compile Include="Network\ByteOutStream.cs" />
+    <Compile Include="Network\Lidgren\Server.cs" />
+    <Compile Include="Network\Lidgren\Client.cs" />
+    <Compile Include="Peer.cs" />
+    <Compile Include="EventHandler.Player.cs" />
+    <Compile Include="Synchronizable\SynchronizedEnum.cs" />
+    <Compile Include="Synchronizable\SynchronizedInt.cs" />
+    <Compile Include="Synchronizable\SynchronizedString.cs" />
+    <Compile Include="Synchronizable\SynchronizedValue.cs" />
+    <Compile Include="Utils\StringExtensions.cs" />
+    <Compile Include="Verify.cs" />
+    <Compile Include="RPC.cs" />
+    <Compile Include="Server\Server.Actor.cs" />
+    <Compile Include="Server\Server.Player.cs" />
+    <Compile Include="Server\Configuration.cs" />
+    <Compile Include="Server\Server.cs" />
+    <Compile Include="Server\Standalone.cs" />
+    <Compile Include="Synchronizable\Synchronizable.cs" />
+    <Compile Include="User\Actor.cs" />
+    <Compile Include="User\Behaviour.cs" />
+    <Compile Include="User\Client.cs" />
+    <Compile Include="User\Configuration.cs" />
+    <Compile Include="User\Context.cs" />
+    <Compile Include="User\Event.cs" />
+    <Compile Include="User\Peer.cs" />
+    <Compile Include="User\Player.cs" />
+    <Compile Include="User\Server.cs" />
+    <Compile Include="Utils\FileUtils.cs" />
+    <Compile Include="Externals\Lidgren\Encryption\INetEncryption.cs" />
+    <Compile Include="Externals\Lidgren\Encryption\NetAESEncryption.cs" />
+    <Compile Include="Externals\Lidgren\Encryption\NetBlockEncryptionBase.cs" />
+    <Compile Include="Externals\Lidgren\Encryption\NetDESEncryption.cs" />
+    <Compile Include="Externals\Lidgren\Encryption\NetRC2Encryption.cs" />
+    <Compile Include="Externals\Lidgren\Encryption\NetTripleDESEncryption.cs" />
+    <Compile Include="Externals\Lidgren\Encryption\NetXorEncryption.cs" />
+    <Compile Include="Externals\Lidgren\Encryption\NetXteaEncryption.cs" />
+    <Compile Include="Externals\Lidgren\NamespaceDoc.cs" />
+    <Compile Include="Externals\Lidgren\NetBigInteger.cs" />
+    <Compile Include="Externals\Lidgren\NetBitVector.cs" />
+    <Compile Include="Externals\Lidgren\NetBitWriter.cs" />
+    <Compile Include="Externals\Lidgren\NetClient.cs" />
+    <Compile Include="Externals\Lidgren\NetConnection.cs" />
+    <Compile Include="Externals\Lidgren\NetConnection.Handshake.cs" />
+    <Compile Include="Externals\Lidgren\NetConnection.Latency.cs" />
+    <Compile Include="Externals\Lidgren\NetConnection.MTU.cs" />
+    <Compile Include="Externals\Lidgren\NetConnectionStatistics.cs" />
+    <Compile Include="Externals\Lidgren\NetConnectionStatus.cs" />
+    <Compile Include="Externals\Lidgren\NetConstants.cs" />
+    <Compile Include="Externals\Lidgren\NetDeliveryMethod.cs" />
+    <Compile Include="Externals\Lidgren\NetException.cs" />
+    <Compile Include="Externals\Lidgren\NetFragmentationHelper.cs" />
+    <Compile Include="Externals\Lidgren\NetFragmentationInfo.cs" />
+    <Compile Include="Externals\Lidgren\NetIncomingMessage.cs" />
+    <Compile Include="Externals\Lidgren\NetIncomingMessage.Peek.cs" />
+    <Compile Include="Externals\Lidgren\NetIncomingMessage.Read.cs" />
+    <Compile Include="Externals\Lidgren\NetIncomingMessage.Read.Reflection.cs" />
+    <Compile Include="Externals\Lidgren\NetIncomingMessage.Write.cs" />
+    <Compile Include="Externals\Lidgren\NetIncomingMessageType.cs" />
+    <Compile Include="Externals\Lidgren\NetMessageType.cs" />
+    <Compile Include="Externals\Lidgren\NetNatIntroduction.cs" />
+    <Compile Include="Externals\Lidgren\NetOutgoingMessage.cs" />
+    <Compile Include="Externals\Lidgren\NetOutgoingMessage.Write.cs" />
+    <Compile Include="Externals\Lidgren\NetOutgoingMessage.Write.Reflection.cs" />
+    <Compile Include="Externals\Lidgren\NetPeer.cs" />
+    <Compile Include="Externals\Lidgren\NetPeer.Discovery.cs" />
+    <Compile Include="Externals\Lidgren\NetPeer.Fragmentation.cs" />
+    <Compile Include="Externals\Lidgren\NetPeer.Internal.cs" />
+    <Compile Include="Externals\Lidgren\NetPeer.LatencySimulation.cs" />
+    <Compile Include="Externals\Lidgren\NetPeer.Logging.cs" />
+    <Compile Include="Externals\Lidgren\NetPeer.MessagePools.cs" />
+    <Compile Include="Externals\Lidgren\NetPeer.Send.cs" />
+    <Compile Include="Externals\Lidgren\NetPeerConfiguration.cs" />
+    <Compile Include="Externals\Lidgren\NetPeerStatistics.cs" />
+    <Compile Include="Externals\Lidgren\NetPeerStatus.cs" />
+    <Compile Include="Externals\Lidgren\NetQueue.cs" />
+    <Compile Include="Externals\Lidgren\NetRandom.cs" />
+    <Compile Include="Externals\Lidgren\NetReceiverChannelBase.cs" />
+    <Compile Include="Externals\Lidgren\NetReliableOrderedReceiver.cs" />
+    <Compile Include="Externals\Lidgren\NetReliableSenderChannel.cs" />
+    <Compile Include="Externals\Lidgren\NetReliableSequencedReceiver.cs" />
+    <Compile Include="Externals\Lidgren\NetReliableUnorderedReceiver.cs" />
+    <Compile Include="Externals\Lidgren\NetSenderChannelBase.cs" />
+    <Compile Include="Externals\Lidgren\NetSendResult.cs" />
+    <Compile Include="Externals\Lidgren\NetServer.cs" />
+    <Compile Include="Externals\Lidgren\NetSRP.cs" />
+    <Compile Include="Externals\Lidgren\NetStoredReliableMessage.cs" />
+    <Compile Include="Externals\Lidgren\NetTime.cs" />
+    <Compile Include="Externals\Lidgren\NetTuple.cs" />
+    <Compile Include="Externals\Lidgren\NetUnreliableSenderChannel.cs" />
+    <Compile Include="Externals\Lidgren\NetUnreliableSequencedReceiver.cs" />
+    <Compile Include="Externals\Lidgren\NetUnreliableUnorderedReceiver.cs" />
+    <Compile Include="Externals\Lidgren\NetUPnP.cs" />
+    <Compile Include="Externals\Lidgren\NetUtility.cs" />
+    <Compile Include="Externals\Lidgren\SenderChannelBase.cs" />
+    <Compile Include="Externals\SlimMath\BoundingBox.cs" />
+    <Compile Include="Externals\SlimMath\BoundingFrustum.cs" />
+    <Compile Include="Externals\SlimMath\BoundingSphere.cs" />
+    <Compile Include="Externals\SlimMath\Collision.cs" />
+    <Compile Include="Externals\SlimMath\Color3.cs" />
+    <Compile Include="Externals\SlimMath\Color4.cs" />
+    <Compile Include="Externals\SlimMath\Design\BaseConverter.cs" />
+    <Compile Include="Externals\SlimMath\Design\FieldPropertyDescriptor.cs" />
+    <Compile Include="Externals\SlimMath\Design\Half2Converter.cs" />
+    <Compile Include="Externals\SlimMath\Design\Half3Converter.cs" />
+    <Compile Include="Externals\SlimMath\Design\Half4Converter.cs" />
+    <Compile Include="Externals\SlimMath\Design\HalfConverter.cs" />
+    <Compile Include="Externals\SlimMath\Design\MatrixConverter.cs" />
+    <Compile Include="Externals\SlimMath\Design\QuaternionConverter.cs" />
+    <Compile Include="Externals\SlimMath\Design\Vector2Converter.cs" />
+    <Compile Include="Externals\SlimMath\Design\Vector3Converter.cs" />
+    <Compile Include="Externals\SlimMath\Design\Vector4Converter.cs" />
+    <Compile Include="Externals\SlimMath\Enums.cs" />
+    <Compile Include="Externals\SlimMath\Gjk.cs" />
+    <Compile Include="Externals\SlimMath\Half.cs" />
+    <Compile Include="Externals\SlimMath\Half2.cs" />
+    <Compile Include="Externals\SlimMath\Half3.cs" />
+    <Compile Include="Externals\SlimMath\Half4.cs" />
+    <Compile Include="Externals\SlimMath\HalfUtilities.cs" />
+    <Compile Include="Externals\SlimMath\MathHelper.cs" />
+    <Compile Include="Externals\SlimMath\Matrix.cs" />
+    <Compile Include="Externals\SlimMath\Plane.cs" />
+    <Compile Include="Externals\SlimMath\Quaternion.cs" />
+    <Compile Include="Externals\SlimMath\Ray.cs" />
+    <Compile Include="Externals\SlimMath\Utilities.cs" />
+    <Compile Include="Externals\SlimMath\Vector2.cs" />
+    <Compile Include="Externals\SlimMath\Vector3.cs" />
+    <Compile Include="Externals\SlimMath\Vector4.cs" />
+    <Compile Include="Network\Interfaces.cs" />
+    <Compile Include="Network\Lidgren\Connection.cs" />
+    <Compile Include="Network\Lidgren\Peer.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Context.cs" />
+    <Compile Include="TimeManager.cs" />
+    <Compile Include="Transform.cs" />
+    <Compile Include="Assert.cs" />
+    <Compile Include="Utils\ByteConverter.cs" />
+    <Compile Include="Utils\StateBuffer.cs" />
+    <Compile Include="Utils\TimerQueueTimer.cs" />
+    <Compile Include="Utils\Tuple.cs" />
+    <Compile Include="Utils\TypeUtils.cs" />
+    <Compile Include="Utils\TypeUtils2.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RPCGen.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RPCGen.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Externals\Lidgren\License.txt" />
+    <Content Include="Externals\SlimMath\License.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>echo f | xcopy "$(TargetPath)" "C:\SlimNet\Demo\RPG\Assets\SlimNet\Assemblies\" /Y
+echo f | xcopy "$(TargetDir)$(TargetName).pdb" "C:\SlimNet\Demo\RPG\Assets\SlimNet\Assemblies\" /Y</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
