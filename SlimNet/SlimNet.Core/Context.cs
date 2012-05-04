@@ -180,14 +180,19 @@ namespace SlimNet
                 Peer.BeforeSimulate();
                 Peer.ContextPlugin.BeforeSimulate();
 
+                // Store current actors in local array so
+                // we can protect ourselves against modifications
+                // of the actors dictionary
+                Actor[] currentActors = actors.Values.ToArray();
+
                 // Call fixed update on all actors
-                foreach (Actor actor in actors.Values)
+                foreach (Actor actor in currentActors)
                 {
                     actor.InternalSimulate();
                 }
 
                 // Update actor colliders
-                foreach (Actor actor in actors.Values)
+                foreach (Actor actor in currentActors)
                 {
                     actor.UpdateCollider();
                 }
@@ -209,7 +214,7 @@ namespace SlimNet
 #if DEBUG || RECORD_STATS
                     Stats.Update();
 
-                    foreach (Player player in players.Values)
+                    foreach (Player player in players.Values.ToArray())
                     {
                         player.Stats.Update();
                     }
@@ -218,7 +223,7 @@ namespace SlimNet
                     // Trigger callback
                     Peer.ContextPlugin.BeforeQueueTransformReplication();
 
-                    foreach (Actor actor in actors.Values)
+                    foreach (Actor actor in currentActors)
                     {
                         actor.QueueStateStream();
                     }
