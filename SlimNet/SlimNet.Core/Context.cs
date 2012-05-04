@@ -50,9 +50,9 @@ namespace SlimNet
         public readonly Scheduler Scheduler;
         public readonly ISpatialPartitioner SpatialPartitioner;
 
-        public IEnumerable<Actor> Actors { get { return actors.Values; } }
-        public IEnumerable<Player> Players { get { return players.Values; } }
-        public IEnumerable<Player> AuthenticatedPlayers { get { return Players.Where(x => x.IsAuthenticated); } }
+        public IEnumerable<Actor> Actors { get { return actors.Values.ToArray(); } }
+        public IEnumerable<Player> Players { get { return players.Values.ToArray(); } }
+        public IEnumerable<Player> AuthenticatedPlayers { get { return Players.Where(x => x.IsAuthenticated).ToArray(); } }
         public bool HasSpatialPartitioner { get { return SpatialPartitioner != null; } }
 
         internal readonly HashSet<Network.IConnection> NetworkQueue;
@@ -132,8 +132,13 @@ namespace SlimNet
             // Trigger callback
             Peer.ContextPlugin.BeforeRenderUpdate();
 
+            // Store current actors in local array so
+            // we can protect ourselves against modifications
+            // of the actors dictionary
+            Actor[] currentActors = actors.Values.ToArray();
+
             // Call fixed update on all actors
-            foreach (Actor actor in actors.Values)
+            foreach (Actor actor in currentActors)
             {
                 actor.InvokeEvents();
 
