@@ -41,13 +41,13 @@ namespace SlimNet
         public readonly Client Client;
         public readonly bool IsClient;
         public readonly bool IsServer;
-        public readonly Stats Stats;
 
+        public readonly Stats Stats;
         public readonly TimeManager Time;
         public readonly RPCDispatcher RPC;
+        public readonly Scheduler Scheduler;
         public readonly EventHandlerActor ActorEventHandler;
         public readonly EventHandlerPlayer PlayerEventHandler;
-        public readonly Scheduler Scheduler;
         public readonly ISpatialPartitioner SpatialPartitioner;
 
         public IEnumerable<Actor> Actors { get { return actors.Values.ToArray(); } }
@@ -102,17 +102,8 @@ namespace SlimNet
             registerEventsForHandler<Actor>(ActorEventHandler = new EventHandlerActor(this));
             registerEventsForHandler<Player>(PlayerEventHandler = new EventHandlerPlayer(this));
 
-            // Get partitioner from plugin
-            SpatialPartitioner = Peer.ContextPlugin.CreateSpatialPartitioner();
-
-            if (HasSpatialPartitioner)
-            {
-                log.Info("Spatial Partitioner: {0}", SpatialPartitioner.GetTypeName());
-            }
-            else
-            {
-                log.Warn("No spatial partitioner detected, you will not be able to do any raycasts or overlaps");
-            }
+            // Create spatial partitioner
+            SpatialPartitioner = createSpatialPartitioner();
 
             // Plugin callback
             Peer.ContextPlugin.ContextStarted();
@@ -137,7 +128,7 @@ namespace SlimNet
             // of the actors dictionary
             Actor[] currentActors = actors.Values.ToArray();
 
-            // Call fixed update on all actors
+            // Invoke events and position actors localy
             foreach (Actor actor in currentActors)
             {
                 actor.InvokeEvents();
@@ -190,7 +181,7 @@ namespace SlimNet
                 // of the actors dictionary
                 Actor[] currentActors = actors.Values.ToArray();
 
-                // Call fixed update on all actors
+                // Call simulate on all actors
                 foreach (Actor actor in currentActors)
                 {
                     actor.InternalSimulate();
@@ -296,7 +287,7 @@ namespace SlimNet
 
                 if (handler == null)
                 {
-                    log.Error("No handler for id #{0} found, can't process byte stream", handlerId);
+                    log.Error("No packet handler for id #{0} found, can't process byte stream", handlerId);
                     return;
                 }
 
@@ -338,6 +329,22 @@ namespace SlimNet
                 handler.Register(ev.GetType());
                 RegisterPacketHandler(handler, ev.EventId);
             }
+        }
+
+        ISpatialPartitioner createSpatialPartitioner()
+        {
+            ISpatialPartitioner spatialPartitioner = Peer.ContextPlugin.CreateSpatialPartitioner();
+
+            if (spatialPartitioner != null)
+            {
+                log.Info("Spatial Partitioner: {0}", spatialPartitioner.GetTypeName());
+            }
+            else
+            {
+                log.Warn("No spatial partitioner detected, you will not be able to do any raycasts or overlaps");
+            }
+
+            return spatialPartitioner;
         }
     }
 }
