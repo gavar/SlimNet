@@ -97,7 +97,7 @@ namespace SlimNet.Unity
             }
         }
 
-        string binaryPath = "";
+        string binaryPath = @"C:\SlimNet\Build";
         int embeddedServerPort = 14000;
         bool useVisualStudioCompiler;
         bool startEmbeddedServerOnPlay;

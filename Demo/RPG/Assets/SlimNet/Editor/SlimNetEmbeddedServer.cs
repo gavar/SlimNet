@@ -131,6 +131,14 @@ public class SlimNetEmbeddedServer : EditorWindow
         }
     }
 
+    static string serverTargetAssemblyDirectory
+    {
+        get
+        {
+            return String.Format("{0}{1}Assemblies", serverTargetDirectory, Path.DirectorySeparatorChar);
+        }
+    }
+
     static string cscPath
     {
         get
@@ -274,15 +282,18 @@ public class SlimNetEmbeddedServer : EditorWindow
     {
         get
         {
+            /*
             if (isOSX)
             {
 
                 return "$PATH$/SlimNet.ConsoleHost.exe";
             }
             else
-            {
-                return @"C:\SlimNet2\Build\SlimNet.ConsoleHost.exe";
-            }
+            {*/
+
+            return String.Format("{0}{1}SlimNet.ConsoleHost.exe", SlimNetEditorSettings.Instance.BinaryPath, Path.PathSeparator);
+
+            //}
         }
     }
 
@@ -330,6 +341,19 @@ public class SlimNetEmbeddedServer : EditorWindow
                 catch (Exception exn)
                 {
                     UnityEngine.Debug.Log("Failed creating directory " + serverTargetDirectory + ": '" + exn.Message + "'");
+                    return;
+                }
+            }
+
+            if (!Directory.Exists(serverTargetAssemblyDirectory))
+            {
+                try
+                {
+                    Directory.CreateDirectory(serverTargetAssemblyDirectory);
+                }
+                catch (Exception exn)
+                {
+                    UnityEngine.Debug.Log("Failed creating directory " + serverTargetAssemblyDirectory + ": '" + exn.Message + "'");
                     return;
                 }
             }
@@ -519,6 +543,14 @@ public class SlimNetEmbeddedServer : EditorWindow
                     EditorGUILayout.IntField(SlimNetEditorSettings.Instance.EmbeddedServerPort);
             }
 
+            using (new SlimNetGUILayout.Horizontal(GUILayout.Width(300)))
+            {
+                GUILayout.Label("Build Path", GUILayout.Width(70));
+
+                SlimNetEditorSettings.Instance.BinaryPath
+                    = GUILayout.TextField(SlimNetEditorSettings.Instance.BinaryPath);
+            }
+
             SlimNetEditorSettings.Instance.StartEmbeddedServerOnPlay =
                 GUILayout.Toggle(SlimNetEditorSettings.Instance.StartEmbeddedServerOnPlay, "Autostart on play");
 
@@ -530,10 +562,10 @@ public class SlimNetEmbeddedServer : EditorWindow
                 if (SlimNetEditorSettings.Instance.UseVisualStudioCompiler)
                 {
                     SlimNetEditorSettings.Instance.AttachDebuggerToEmbeddedServer
-                        = GUILayout.Toggle(SlimNetEditorSettings.Instance.AttachDebuggerToEmbeddedServer, "Attach Debugger Directly (Windows Only)");
+                        = GUILayout.Toggle(SlimNetEditorSettings.Instance.AttachDebuggerToEmbeddedServer, "Attach Debugger On Start");
 
                     SlimNetEditorSettings.Instance.AttachDebuggerOnError
-                        = GUILayout.Toggle(SlimNetEditorSettings.Instance.AttachDebuggerOnError, "Attach Debugger On Error (Windows Only)");
+                        = GUILayout.Toggle(SlimNetEditorSettings.Instance.AttachDebuggerOnError, "Attach Debugger On Error");
                 }
             }
             else
