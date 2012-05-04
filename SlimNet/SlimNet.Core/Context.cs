@@ -60,13 +60,13 @@ namespace SlimNet
         internal readonly StateStreamHandler StateStreamHandler;
 
         internal Context(Client client)
-            : this((Peer)client)
+            : this(client as Peer)
         {
 
         }
 
         internal Context(Server server)
-            : this((Peer)server)
+            : this(server as Peer)
         {
 
         }
@@ -111,7 +111,7 @@ namespace SlimNet
             }
             else
             {
-                log.Warn("No spatial partitioner detected, you will not be able to do any raycasts or overlaps on the server.");
+                log.Warn("No spatial partitioner detected, you will not be able to do any raycasts or overlaps");
             }
 
             // Plugin callback
