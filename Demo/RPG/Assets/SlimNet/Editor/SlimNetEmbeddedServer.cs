@@ -290,8 +290,8 @@ public class SlimNetEmbeddedServer : EditorWindow
             }
             else
             {*/
-
-            return String.Format("{0}{1}SlimNet.ConsoleHost.exe", SlimNetEditorSettings.Instance.BinaryPath, Path.PathSeparator);
+			
+            return String.Format("{0}{1}SlimNet.ConsoleHost.exe", SlimNetEditorSettings.Instance.BinaryPath, Path.DirectorySeparatorChar);
 
             //}
         }
