@@ -29,25 +29,6 @@ namespace SlimNet
     {
         static readonly Log log = Log.GetLogger(typeof(Verify));
 
-        /*
-        public static bool NotNull<T>(T arg, string name)
-            where T : class
-        {
-            if (ReferenceEquals(arg, null))
-            {
-                string error = String.Format("Argument '{0}' of type '{1}' was null", name, typeof(T));
-#if VERIFY_THROWS
-                throw new RuntimeException(error);
-#else
-                log.Error(error);
-                return false;
-//#endif
-            }
-
-            return true;
-        }
-        */
-
         public static bool Authenticated(Player player)
         {
             if (player == null)

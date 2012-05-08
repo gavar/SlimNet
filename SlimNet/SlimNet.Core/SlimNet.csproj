@@ -57,9 +57,11 @@
     <Compile Include="ActorDefinition.cs" />
     <Compile Include="Behaviours\InterestManager.cs" />
     <Compile Include="Collections\QuadTree.cs" />
+    <Compile Include="Collider.Box.cs" />
     <Compile Include="Collider.cs" />
     <Compile Include="Collections\BinaryHeap.cs" />
     <Content Include="CompilerSymbols.txt" />
+    <Compile Include="Collider.Sphere.cs" />
     <Compile Include="EventDescriptor.cs" />
     <Compile Include="EventHandler.Actor.cs" />
     <Compile Include="EventHandler.RaiseEvent.cs" />
