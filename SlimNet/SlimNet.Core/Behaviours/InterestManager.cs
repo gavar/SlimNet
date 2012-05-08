@@ -58,6 +58,21 @@ namespace SlimNet.Behaviours
             this.updateRate = Math.Max(updateRate, 0);
         }
 
+        public override void Start()
+        {
+            base.Start();
+
+            if (Actor.IsOwnedByServer)
+            {
+                log.Warn("InterestManager only makes sense on actors owned by players, {0} is owned by the server", Actor);
+            }
+
+            if (!Context.HasSpatialPartitioner)
+            {
+                log.Warn("No spatial partitioner active, InterestManager will not work.");
+            }
+        }
+
         public override void Simulate()
         {
             ++tick;
@@ -73,13 +88,11 @@ namespace SlimNet.Behaviours
             {
                 if (Actor.IsOwnedByServer)
                 {
-                    log.Warn("InterestManager only makes sense on actors owned by players, {0} is owned by the server", Actor);
                     return;
                 }
 
                 if (!Context.HasSpatialPartitioner)
                 {
-                    log.Warn("No spatial partitioner active, InterestManager will not work.");
                     return;
                 }
 
