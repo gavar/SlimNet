@@ -30,11 +30,6 @@ namespace SlimNet
         public Vector3 Position { get; set; }
         public Quaternion Rotation { get; set; }
 
-        internal Transform()
-        {
-            Reset();
-        }
-
         public Vector3 Up { get { return Vector3.Transform(Vector3.Up, Rotation); } }
         public Vector3 Down { get { return Vector3.Transform(Vector3.Down, Rotation); } }
         public Vector3 Left { get { return Vector3.Transform(Vector3.Left, Rotation); } }
@@ -42,15 +37,15 @@ namespace SlimNet
         public Vector3 Forward { get { return Vector3.Transform(Vector3.Forward, Rotation); } }
         public Vector3 Backward { get { return Vector3.Transform(Vector3.Backward, Rotation); } }
 
-        public void Translate(Vector3 vector)
-        {
-
-        }
-
-        internal void Reset()
+        internal Transform()
         {
             Position = Vector3.Zero;
             Rotation = Quaternion.Identity;
+        }
+
+        public void Translate(Vector3 vector)
+        {
+            Position += vector;
         }
     }
 }
