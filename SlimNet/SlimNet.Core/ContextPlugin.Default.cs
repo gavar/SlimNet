@@ -25,32 +25,6 @@ using System.Linq;
 
 namespace SlimNet
 {
-    public abstract class ContextPlugin
-    {
-        public Context Context { get; internal set; }
-
-        public abstract void ContextStarted();
-        public abstract ISpatialPartitioner CreateSpatialPartitioner();
-
-        public abstract void ActorSpawned(Actor actor);
-        public abstract void ActorDespawning(Actor actor);
-
-        public abstract void PlayerJoined(Player player);
-        public abstract void PlayerLeaving(Player player);
-
-        public abstract void BeforeStateStreamQueue(Actor actor);
-        public abstract void AfterStateStreamQueue(Actor actor);
-
-        public abstract void BeforeQueueTransformReplication();
-        public abstract void AfterQueueTransformReplication();
-        public abstract void BeforeSimulate();
-        public abstract void AfterSimulate();
-        public abstract void BeforeSend();
-        public abstract void AfterSend();
-        public abstract void AfterRenderUpdate();
-        public abstract void BeforeRenderUpdate();
-    }
-
     public class DefaultContextPlugin : ContextPlugin
     {
         public override ISpatialPartitioner CreateSpatialPartitioner()
@@ -60,7 +34,6 @@ namespace SlimNet
 
         public override void ContextStarted()
         {
-
         }
 
         public override void ActorSpawned(Actor actor)
@@ -134,12 +107,10 @@ namespace SlimNet
 
         public override void AfterRenderUpdate()
         {
-
         }
 
         public override void BeforeRenderUpdate()
         {
-
         }
     }
 }
