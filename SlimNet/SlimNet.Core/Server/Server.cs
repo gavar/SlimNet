@@ -85,8 +85,6 @@ namespace SlimNet
 
         public override void OnDataMessage(Network.ByteInStream stream)
         {
-            stream.RemoteGameTime = stream.ReadSingle();
-
             Context.Time.Update();
             Context.OnNetworkStream(stream);
         }

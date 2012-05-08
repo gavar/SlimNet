@@ -67,6 +67,7 @@ namespace SlimNet
         public void Update(float deltaTime)
         {
             // Receive all network input
+            // TODO: This needs to be limited.
             while (networkClient.ReceiveOne())
             {
 
@@ -109,8 +110,6 @@ namespace SlimNet
 
         public override void OnDataMessage(Network.ByteInStream stream)
         {
-            stream.RemoteGameTime = stream.ReadSingle();
-
             Context.Time.UpdateOffset(stream.RemoteGameTime);
             Context.OnNetworkStream(stream);
         }

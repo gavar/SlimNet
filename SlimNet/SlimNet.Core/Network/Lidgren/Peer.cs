@@ -118,7 +118,9 @@ namespace SlimNet.Network
                 return;
             }
             ByteInStream stream = new ByteInStream(message.PeekDataBuffer(), message.LengthBytes, 0);
+
             stream.Connection = (IConnection)message.SenderConnection.Tag;
+            stream.RemoteGameTime = stream.ReadSingle();
 
             Receiver.Context.Stats.AddInBytes(message.LengthBytes);
             Receiver.OnDataMessage(stream);
