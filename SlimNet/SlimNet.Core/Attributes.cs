@@ -37,12 +37,6 @@ namespace SlimNet
     }
 
     [AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
-    public sealed class PlayerPluginAttribute : Attribute
-    {
-
-    }
-
-    [AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
     public sealed class ServerContextPluginAttribute : Attribute
     {
 
@@ -50,12 +44,6 @@ namespace SlimNet
 
     [AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
     public sealed class ClientContextPluginAttribute : Attribute
-    {
-
-    }
-
-    [AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
-    public sealed class TransformReplicatorAttribute : Attribute
     {
 
     }
