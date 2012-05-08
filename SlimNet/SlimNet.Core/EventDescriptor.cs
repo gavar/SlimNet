@@ -23,7 +23,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace SlimNet
 {
@@ -44,90 +43,5 @@ namespace SlimNet
 
         abstract internal void RegisterReceiver(Delegate receiver);
         abstract internal void RegisterReceiver(Delegate receiver, T target);
-    }
-
-    internal class EventDescriptorTyped<TEvent, TTarget> : EventDescriptor<TTarget>
-        where TTarget : class, IEventTarget
-        where TEvent : Event<TTarget>, new()
-    {
-        List<Action<TEvent>> receivers = new List<Action<TEvent>>();
-        List<Action<TEvent>>[] targetReceivers = new List<Action<TEvent>>[UInt16.MaxValue];
-
-        internal override Event<TTarget> Create(TTarget target)
-        {
-            return Handler.Create<TEvent>(target);
-        }
-
-        internal override void Invoke(Event<TTarget> ev)
-        {
-            TEvent casted = (TEvent)ev;
-
-            runEventOn(casted, receivers);
-            runEventOn(casted, targetReceivers[ev.Target.Id]);
-        }
-
-        internal override void RemoveReceiver(Delegate receiver)
-        {
-            receivers.Remove((Action<TEvent>)receiver);
-        }
-
-        internal override void RemoveReceiver(Delegate receiver, TTarget target)
-        {
-            if (targetReceivers[target.Id] != null)
-            {
-                targetReceivers[target.Id].Remove((Action<TEvent>)receiver);
-            }
-        }
-
-        internal override void RegisterReceiver(Delegate receiver)
-        {
-            receivers.Add((Action<TEvent>)receiver);
-        }
-
-        internal override void RegisterReceiver(Delegate receiver, TTarget target)
-        {
-            if (targetReceivers[target.Id] == null)
-            {
-                targetReceivers[target.Id] = new List<Action<TEvent>>();
-            }
-
-            targetReceivers[target.Id].Add((Action<TEvent>)receiver);
-        }
-
-        internal override void ClearReceivers(TTarget target)
-        {
-            Assert.NotNull(target, "target");
-
-            if (targetReceivers[target.Id] != null)
-            {
-                targetReceivers[target.Id].Clear();
-            }
-        }
-
-        internal override List<Delegate> GetTargetReceivers(TTarget target)
-        {
-            if (targetReceivers[target.Id] != null)
-            {
-                return targetReceivers[target.Id].Cast<Delegate>().ToList();
-            }
-
-            return new List<Delegate>();
-        }
-
-        void runEventOn(TEvent ev, List<Action<TEvent>> list)
-        {
-            if (list != null)
-            {
-                for (var i = 0; i < list.Count; ++i)
-                {
-                    if (ev.StopProcessing)
-                    {
-                        return;
-                    }
-
-                    list[i](ev);
-                }
-            }
-        }
     }
 }

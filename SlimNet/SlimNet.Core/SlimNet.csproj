@@ -62,8 +62,10 @@
     <Compile Include="Collections\BinaryHeap.cs" />
     <Content Include="CompilerSymbols.txt" />
     <Compile Include="Collider.Sphere.cs" />
+    <Compile Include="ContextPlugin.Default.cs" />
     <Compile Include="EventDescriptor.cs" />
-    <Compile Include="EventHandler.Actor.cs" />
+    <Compile Include="EventDescriptorTyped.cs" />
+    <Compile Include="EventHandlerActor.cs" />
     <Compile Include="EventHandler.RaiseEvent.cs" />
     <Compile Include="EventSimple.cs" />
     <Compile Include="Events\ChangeOwner.cs" />
@@ -87,7 +89,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Context.Actor.cs" />
     <Compile Include="Context.Player.cs" />
-    <Compile Include="Context.Plugin.cs" />
+    <Compile Include="ContextPlugin.cs" />
     <Compile Include="Utils\DictionaryExtensions.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="Enums.cs" />
@@ -111,7 +113,7 @@
     <Compile Include="Network\Lidgren\Server.cs" />
     <Compile Include="Network\Lidgren\Client.cs" />
     <Compile Include="Peer.cs" />
-    <Compile Include="EventHandler.Player.cs" />
+    <Compile Include="EventHandlerPlayer.cs" />
     <Compile Include="Synchronizable\SynchronizedEnum.cs" />
     <Compile Include="Synchronizable\SynchronizedInt.cs" />
     <Compile Include="Synchronizable\SynchronizedString.cs" />

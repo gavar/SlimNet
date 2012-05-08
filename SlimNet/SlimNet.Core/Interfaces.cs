@@ -21,8 +21,8 @@
  * itself or its source code in original or modified form.
  */
 
-using SlimMath;
 using System.Collections.Generic;
+using SlimMath;
 
 namespace SlimNet
 {
