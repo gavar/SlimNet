@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Mono-2.10.8\bin\pdb2mdb" SlimNet.dll
